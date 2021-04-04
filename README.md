@@ -16,8 +16,9 @@ Basic updates:
 ```
 ```diff
  func init() {
-+       klog.InitFlags(nil)
-+       rootCmd.Flags().AddGoFlagSet(goflags.CommandLine)
++       fs := goflags.NewFlagSet("", goflags.PanicOnError)
++       klog.InitFlags(fs)
++       rootCmd.Flags().AddGoFlagSet(fs)
 +
 ```
 
